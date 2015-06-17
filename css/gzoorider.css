@@ -1,6 +1,6 @@
 @font-face {
   font-family: Palermo;
-  src: url("palermo.ttf"); }
+  src: url("../palermo.eot") format("eot"), url("../palermo.woff") format("woff") url("../palermo.ttf") format("truetype"), url("../palermo.svg@Palermo") format("svg"); }
 html, body {
   height: 100%; }
 
@@ -9,25 +9,37 @@ body {
   background-size: cover;
   color: black;
   font-family: sans-serif; }
+  @media (max-width: 702px) {
+    body {
+      background: red; } }
 
 p {
   margin: 0 0 14pt; }
 
-#main {
-  position: absolute;
+h2 {
+  font-size: 20pt; }
+
+#main, #white-strip {
   right: 70px;
   top: 0;
-  width: 44%;
-  padding: 1em; }
+  width: 600px; }
+
+#main {
+  position: absolute; }
+  @media (max-width: 702px) {
+    #main {
+      width: 80%; } }
 
 #white-strip {
   background: rgba(255, 255, 255, 0.7);
   position: fixed;
-  right: 70px;
-  top: 0;
   bottom: 0;
-  width: 44%;
-  padding: 1em; }
+  padding: 16px; }
+  @media (max-width: 702px) {
+    #white-strip {
+      top: 0;
+      left: 0;
+      right: 0; } }
 
 #site-title {
   font-size: 42pt;
@@ -35,26 +47,40 @@ p {
   font-family: Palermo;
   margin: 42px 0 20px;
   position: relative;
-  left: -40px;
+  left: -70px;
   font-style: italic; }
-
-#site-title::before {
-  content: '>> '; }
+  @media (max-width: 702px) {
+    #site-title {
+      left: 0; } }
+  #site-title::before {
+    content: '>> '; }
+    @media (max-width: 702px) {
+      #site-title::before {
+        content: ''; } }
 
 #projects {
   border-collapse: separate;
   border-spacing: 8pt; }
   #projects .thumbnail {
     width: 200px; }
+    @media (max-width: 702px) {
+      #projects .thumbnail {
+        width: 100px; } }
   #projects td {
     text-align: left; }
   #projects th {
     text-align: center;
     font-family: palermo;
     font-size: 16pt; }
+    @media (max-width: 702px) {
+      #projects th {
+        font-size: 10pt; } }
     #projects th h2 {
       display: block;
       margin: 0; }
+      @media (max-width: 702px) {
+        #projects th h2 {
+          font-size: 12pt; } }
     #projects th .source {
       display: block;
       margin-bottom: 12px; }

@@ -1,6 +1,20 @@
+$main-column-width: 600px;
+$main-column-padding: 16px;
+$right-margin: 70px;
+
 @font-face {
 	font-family: Palermo;
-	src: url('palermo.ttf');
+	src: url('../palermo.eot') format('eot'),
+		 url('../palermo.woff') format('woff')
+		 url('../palermo.ttf') format('truetype'),
+		 url('../palermo.svg@Palermo') format('svg');
+}
+
+
+@mixin narrow {
+	@media (max-width: $main-column-width + $right-margin + 2*$main-column-padding) {
+		@content;
+	}
 }
 
 html, body {
@@ -12,28 +26,43 @@ body {
 	background-size: cover;
 	color: black;
 	font-family: sans-serif;
+	@include narrow {
+		background: red;
+	}
 }
 
 p {
 	margin: 0 0 14pt;
 }
 
+h2 {
+	font-size: 20pt;
+}
+
+#main, #white-strip {
+	right: $right-margin;
+	top: 0;
+	width: $main-column-width;
+}
+
 #main {
 	position: absolute;
-	right: 70px;
-	top: 0;
-	width: 44%;
-	padding: 1em;
+	@include narrow {
+		width: 80%;
+	}
 }
 
 #white-strip {
 	background: rgba(255, 255, 255, 0.7);
 	position: fixed;
-	right: 70px;
-	top: 0;
 	bottom: 0;
-	width: 44%;
-	padding: 1em;
+	padding: $main-column-padding;
+
+	@include narrow {
+		top: 0;
+		left: 0;
+		right: 0;
+	}
 }
 
 #site-title {
@@ -42,12 +71,19 @@ p {
 	font-family: Palermo;
 	margin: 42px 0 20px;
 	position: relative;
-	left: -40px;
+	left: -70px;
 	font-style: italic;
-}
 
-#site-title::before {
-	content: '>> ';
+	@include narrow {
+		left: 0;
+	}
+
+	&::before {
+		content: '>> ';
+		@include narrow {
+			content: '';
+		}
+	}
 }
 
 #projects {
@@ -55,6 +91,10 @@ p {
 	border-spacing: 8pt;
 	.thumbnail {
 		width: 200px;
+
+		@include narrow {
+			width: 100px;
+		}
 	}
 
 	td {
@@ -66,9 +106,17 @@ p {
 		font-family: palermo;
 		font-size: 16pt;
 
+		@include narrow {
+			font-size: 10pt;
+		}
+
 		h2 {
 			display: block;
 			margin: 0;
+
+			@include narrow {
+				font-size: 12pt;
+			}
 		}
 
 		.source {
