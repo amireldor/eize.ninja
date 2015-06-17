@@ -8,9 +8,9 @@ html, body {
 }
 
 body {
-	background: white url('images/gzooriderx.svg') no-repeat;
+	background: white url('../images/gzooriderx.svg') no-repeat;
 	background-size: cover;
-	color black;
+	color: black;
 	font-family: sans-serif;
 }
 
@@ -53,31 +53,36 @@ p {
 #projects {
 	border-collapse: separate;
 	border-spacing: 8pt;
+	.thumbnail {
+		width: 200px;
+	}
+
+	td {
+		text-align: left;
+	}
+
+	th {
+		text-align: center;
+		font-family: palermo;
+		font-size: 16pt;
+
+		h2 {
+			display: block;
+			margin: 0;
+		}
+
+		.source {
+			display: block;
+			margin-bottom: 12px;
+		}
+
+		.product {
+			color: #0000ff;
+		}
+	}
+
+	th, td {
+		vertical-align: top;
+	}
 }
 
-#projects .thumbnail {
-	width: 200px;
-}
-
-#projects th h2 {
-	display: block;
-	margin-top: 0;
-}
-
-#projects th h2 a {
-	color: #0000ff;
-}
-
-#projects td {
-	text-align: left;
-}
-
-#projects th {
-	text-align: center;
-	font-family: palermo;
-	font-size: 16pt;
-}
-
-#projects th, #projects td {
-	vertical-align: top;
-}
