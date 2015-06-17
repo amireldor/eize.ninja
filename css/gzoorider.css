@@ -9,9 +9,6 @@ body {
   background-size: cover;
   color: black;
   font-family: sans-serif; }
-  @media (max-width: 702px) {
-    body {
-      background: red; } }
 
 p {
   margin: 0 0 14pt; }
@@ -28,7 +25,8 @@ h2 {
   position: absolute; }
   @media (max-width: 702px) {
     #main {
-      width: 80%; } }
+      width: 100%;
+      right: 0; } }
 
 #white-strip {
   background: rgba(255, 255, 255, 0.7);
