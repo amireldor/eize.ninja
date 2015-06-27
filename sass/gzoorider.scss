@@ -132,3 +132,24 @@ h2 {
 	}
 }
 
+#whatswith {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 420px;
+
+	.answer {
+		display: none;
+		background: red;
+	}
+
+	.question {
+		margin: 3px;
+		font-style: italic;
+		font-size: 10pt;
+		opacity: 0.6;
+		&:hover  {
+			cursor: pointer;
+		}
+	}
+}
