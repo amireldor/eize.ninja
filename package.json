@@ -1,0 +1,24 @@
+{
+  "name": "eize.ninja",
+  "version": "0.0.0",
+  "description": "My projects' site",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amireldor/eize.ninja.git"
+  },
+  "author": "Amir Eldor",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/amireldor/eize.ninja/issues"
+  },
+  "homepage": "https://github.com/amireldor/eize.ninja#readme",
+  "dependencies": {
+    "express": "^4.13.1",
+    "jade": "^1.11.0",
+    "markdown": "^0.5.0"
+  }
+}
