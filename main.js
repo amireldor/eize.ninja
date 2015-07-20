@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 
 app.get('/:proj', function (req, res) {
     var proj = req.params.proj || '';
-    res.render('article', { title: 'HI!', message: 'kubia2' + proj });
+    res.render('projects/berserkore', { });
 });
 
 var server = app.listen(3000, function() {
