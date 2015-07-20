@@ -1,0 +1,155 @@
+$main-column-width: 600px;
+$main-column-padding: 16px;
+$right-margin: 70px;
+
+@font-face {
+	font-family: Palermo;
+	src: url('../palermo.eot') format('eot'),
+		 url('../palermo.woff') format('woff')
+		 url('../palermo.ttf') format('truetype'),
+		 url('../palermo.svg@Palermo') format('svg');
+}
+
+
+@mixin narrow {
+	@media (max-width: $main-column-width + $right-margin + 2*$main-column-padding) {
+		@content;
+	}
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: white url('../images/gzooriderx.svg') no-repeat;
+	background-size: cover;
+	color: black;
+	font-family: sans-serif;
+}
+
+p {
+	margin: 0 0 14pt;
+}
+
+h2 {
+	font-size: 20pt;
+}
+
+#main, #white-strip {
+	right: $right-margin;
+	top: 0;
+	width: $main-column-width;
+}
+
+#main {
+	position: absolute;
+	@include narrow {
+		width: 100%;
+		right: 0;
+	}
+}
+
+#white-strip {
+	background: rgba(255, 255, 255, 0.7);
+	position: fixed;
+	bottom: 0;
+	padding: $main-column-padding;
+
+	@include narrow {
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+}
+
+#site-title {
+	font-size: 42pt;
+	font-weight: bold;
+	font-family: Palermo;
+	margin: 42px 0 20px;
+	position: relative;
+	left: -70px;
+	font-style: italic;
+
+	@include narrow {
+		left: 0;
+	}
+
+	&::before {
+		content: '>> ';
+		@include narrow {
+			content: '';
+		}
+	}
+}
+
+#projects {
+	border-collapse: separate;
+	border-spacing: 8pt;
+	.thumbnail {
+		width: 200px;
+
+		@include narrow {
+			width: 100px;
+		}
+	}
+
+	td {
+		text-align: left;
+	}
+
+	th {
+		text-align: center;
+		font-family: palermo;
+		font-size: 16pt;
+
+		@include narrow {
+			font-size: 10pt;
+		}
+
+		h2 {
+			display: block;
+			margin: 0;
+
+			@include narrow {
+				font-size: 12pt;
+			}
+		}
+
+		.source {
+			display: block;
+			margin-bottom: 12px;
+		}
+
+		.product {
+			color: #0000ff;
+		}
+	}
+
+	th, td {
+		vertical-align: top;
+	}
+}
+
+#whatswith {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 420px;
+
+	.answer {
+		display: none;
+		background: red;
+	}
+
+	.question {
+		margin: 3px;
+		font-style: italic;
+		font-size: 10pt;
+		opacity: 0.6;
+		&:hover  {
+			cursor: pointer;
+		}
+	}
+}
