@@ -1,4 +1,6 @@
 var express = require('express');
+var fs = require('fs');
+
 var app = express();
 
 app.set('views', './views');
@@ -12,7 +14,16 @@ app.get('/', function (req, res) {
 
 app.get('/:proj', function (req, res) {
     var proj = req.params.proj || '';
-    res.render('projects/berserkore', { });
+
+    // get available .jade files for projects
+    var available_projs = fs.readdirSync('./views/projects');
+    available_projs = available_projs.filter(function(filename) {
+        var re = new RegExp('\.jade$');
+        //return filename.endsWith('.jade');
+        return filename.match(re);
+    });
+
+    res.render('projects/berserkore', { debug: available_projs });
 });
 
 var server = app.listen(3000, function() {
