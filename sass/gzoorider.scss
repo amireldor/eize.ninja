@@ -48,13 +48,17 @@ h2 {
 		width: 100%;
 		right: 0;
 	}
+    padding-bottom: 174px;
+
+    .intro {
+        padding: 0 8pt;
+    }
 }
 
 #white-strip {
 	background: rgba(255, 255, 255, 0.7);
 	position: fixed;
 	bottom: 0;
-	padding: $main-column-padding;
 
 	@include narrow {
 		top: 0;
@@ -84,31 +88,28 @@ h2 {
 	}
 }
 
-#projects {
-	border-collapse: separate;
-	border-spacing: 8pt;
-	.thumbnail {
-		width: 200px;
+article.project {
+	padding: $main-column-padding;
 
-		@include narrow {
-			width: 100px;
-		}
-	}
+    header {
+        margin: 1em 0;
 
-	td {
-		text-align: left;
-	}
+        .thumbnail {
+            width: 200px;
 
-	th {
+            @include narrow {
+                width: 100px;
+            }
+        }
+
 		text-align: center;
-		font-family: palermo;
 		font-size: 16pt;
 
 		@include narrow {
 			font-size: 10pt;
 		}
 
-		h2 {
+		h1 {
 			display: block;
 			margin: 0;
 
@@ -117,19 +118,27 @@ h2 {
 			}
 		}
 
-		.source {
-			display: block;
+		.links {
+            display: block;
 			margin-bottom: 12px;
+            font-size: 12pt;
+            a {
+                display: inline-block;
+                margin-right: 1.2em;
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
 		}
+
+        .source {
+            font-size: .8em;
+        }
 
 		.product {
 			color: #0000ff;
 		}
-	}
-
-	th, td {
-		vertical-align: top;
-	}
+    }
 }
 
 #whatswith {

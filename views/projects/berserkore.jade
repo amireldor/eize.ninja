@@ -8,12 +8,14 @@ block content
     - var download_url = "http://eize.ninja/berserkore-beta.zip";
     - var source_url = "https://github.com/amireldor/berserkore-windows";
 
-    h1= page_name
-    #content
-        h2
-            a(href=download_url).product= page_name
-            a(href=source_url).source= (source)
-            img(src="images/berserkore-icon.png" alt="BERSEKORE icon")
+    article.project
+        header
+            h1
+                a(href=download_url).product= page_name
+            .links
+                a(href=download_url).download download link
+                a(href=source_url).source source link
+            img(src="images/berserkore-icon.png" alt="BERSEKORE icon").thumbnail
         :markdown
             **BERSERKORE** is a magnificent side-scroller game where you can't jump
             and you shoot red enemies. All of this while bombs of might fall upon
