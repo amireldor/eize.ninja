@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
         return deferred.promise;
     };
 
-    var renders = [ render_defer('projdcts/thumb_berserkore'), render_defer('projects/thumb_amir-x') ];
+    var renders = [ render_defer('projects/thumb_berserkore'), render_defer('projects/thumb_amir-x') ];
     Q.allSettled(renders).then(function (results) {
         var html = '';
         for (d of results) {
