@@ -10,12 +10,6 @@ app.set('view engine', 'jade');
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-    res.render('base');
-});
-
-app.get('/:proj', function (req, res) {
-    var proj = req.params.proj || '';
-
     // get available .jade files for projects
     var available_projs = fs.readdirSync('./views/projects');
     available_projs = available_projs.filter(function(filename) {
@@ -23,7 +17,7 @@ app.get('/:proj', function (req, res) {
         return filename.match(re);
     });
 
-
+    // returns a promise when the rendering finished
     render_defer = function (template) {
         var deferred= Q.defer();
         app.render(template, function (err, html) {
@@ -35,14 +29,22 @@ app.get('/:proj', function (req, res) {
         return deferred.promise;
     };
 
-    var renders = [ render_defer('projects/berserkore'), render_defer('projects/amir-x') ];
-    Q.allSettled(renders).then(function (data) {
+    var renders = [ render_defer('projdcts/thumb_berserkore'), render_defer('projects/thumb_amir-x') ];
+    Q.allSettled(renders).then(function (results) {
         var html = '';
-        for (d of data) {
-            html += d.value;
+        for (d of results) {
+            if (d.value) html += d.value;
         }
-        res.send(html);
-    });
+        return html;
+    }).then(function (data) {
+        res.render('home', { html: data });
+    });;
+});
+
+app.get('/:proj', function (req, res) {
+    var proj = req.params.proj || '';
+
+    res.send('not yet');
 });
 
 var server = app.listen(3000, function() {
