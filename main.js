@@ -1,5 +1,6 @@
 var express = require('express');
 var fs = require('fs');
+var Q = require('q');
 
 var app = express();
 
@@ -19,11 +20,29 @@ app.get('/:proj', function (req, res) {
     var available_projs = fs.readdirSync('./views/projects');
     available_projs = available_projs.filter(function(filename) {
         var re = new RegExp('\.jade$');
-        //return filename.endsWith('.jade');
         return filename.match(re);
     });
 
-    res.render('projects/berserkore', { debug: available_projs });
+
+    render_defer = function (template) {
+        var deferred= Q.defer();
+        app.render(template, function (err, html) {
+            if (err != null) {
+                deferred.reject(err);
+            }
+            deferred.resolve(html);
+        });
+        return deferred.promise;
+    };
+
+    var renders = [ render_defer('projects/berserkore'), render_defer('projects/amir-x') ];
+    Q.allSettled(renders).then(function (data) {
+        var html = '';
+        for (d of data) {
+            html += d.value;
+        }
+        res.send(html);
+    });
 });
 
 var server = app.listen(3000, function() {
