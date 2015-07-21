@@ -32,9 +32,3 @@ var server = app.listen(3000, function() {
 
     console.log("Listening at %s:%s", host, port);
 });
-
-/*
-exports.init = function() {
-    console.log("hi!");
-}
-*/
