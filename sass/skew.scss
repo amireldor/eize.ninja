@@ -5,13 +5,23 @@ $bg_content: #a4c3ed;
 $bg_title1: #aaca77;
 $bg_title2: #e7a264; 
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:500);
+@import url(http://fonts.googleapis.com/css?family=Kameron:700);
+
+$font_serif: 'Kameron';
+$font_sans: 'Roboto';
+
+$width: 800px;
+$nice_padding: 20px;
+
 body {
     color: $fg_color;
     background: $bg_page;
+    font-family: $font_serif, serif;
 }
 
 #main {
-    width: 800px;
+    width: $width;
     margin: 0 auto;
 }
 
@@ -20,11 +30,35 @@ body {
 }
 
 #site-title {
+    font-family: $font_serif, serif;
+    font-size: 42pt;
+
+    span {
+        display: inline-block;
+        box-sizing: padding-box;
+        transform: skewX(-10deg);
+        transform-origin: 0 100%;
+        .inside {
+            transform: skewX(10deg);
+        }
+        padding: 8pt;
+    }
+
+    $words_ratio: 0.6;
+    $max_height: 60pt;
+
     .eize {
         background: $bg_title1;
+        width: ($width * $words_ratio) - $nice_padding;
+        margin-right: $nice_padding;
+        padding-top: $max_height * 0.2;
+        text-align: right;
     }
 
     .ninja {
         background: $bg_title2;
+        width: $width * (1-$words_ratio);
+        padding-top: $max_height;
+        text-align: left;
     }
 }
