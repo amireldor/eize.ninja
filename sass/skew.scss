@@ -1,0 +1,30 @@
+$fg_color: black;
+
+$bg_page: #7793e7; 
+$bg_content: #a4c3ed;
+$bg_title1: #aaca77;
+$bg_title2: #e7a264; 
+
+body {
+    color: $fg_color;
+    background: $bg_page;
+}
+
+#main {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#content {
+    background: $bg_content;
+}
+
+#site-title {
+    .eize {
+        background: $bg_title1;
+    }
+
+    .ninja {
+        background: $bg_title2;
+    }
+}

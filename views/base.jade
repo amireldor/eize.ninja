@@ -7,23 +7,15 @@ html(lang=en)
             block title
                 =site
         block head_include
-            link(href="css/gzoorider.css" rel="stylesheet")
+            link(href="css/skew.css" rel="stylesheet")
         meta(charset="utf-8")
     body
         #everything
-            #white-strip
             #main
-                h1#site-title eize.ninja
+                h1#site-title
+                    span.eize eize
+                    span.ninja ninja
                 p.intro ...and what a ninja you are! these are some projects, for you to behold.
-                block content
-                    em nothing to see here
-            aside#whatswith
-                p.question What's with the badly drawn image?
-                .answer
-                    :markdown
-                        This is a gzoo warrior mounted on his gzoo holding a mace of
-                        steel. The gzoo are horse-sized deer with great might and the
-                        gzoo warriors use them as chargers in the battlefield. It is
-                        known that Dark Larva are gzoo-eaters and thus enemies to the
-                        gzoo people.
-
+                #content
+                    block content
+                        em nothing to see here
