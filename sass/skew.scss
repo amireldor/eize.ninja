@@ -36,10 +36,28 @@ body {
     span {
         display: inline-block;
         box-sizing: padding-box;
-        transform: skewX(-10deg);
         transform-origin: 0 100%;
+
+        // this will make the nice animation for the span and its .inside
+        @mixin title_animation($name, $deg) {
+            transform: skewX($deg);
+            animation: #{$name} 6s infinite linear;
+            @keyframes #{$name} {
+                from, 40% {
+                    transform: skewX($deg);
+                }
+                50%, 80% {
+                    transform: skewX(0);
+                }
+                90%, to {
+                    transform: skewX($deg);
+                }
+            }
+        }
+
+        @include title_animation('outside', -10deg);
         .inside {
-            transform: skewX(10deg);
+            @include title_animation('inside', 10deg);
         }
         padding: 8pt;
     }
