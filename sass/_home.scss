@@ -1,9 +1,32 @@
-//@import "globals";
-
 #projects {
-    $proj_width: $width * .8;
+    $proj_width: $width * .94;
+    margin: 0 auto;
+    width: $proj_width;
 
-    img.thumbnail {
-        max-width: ($proj_width + 10px) / 3;
+    article {
+        $spacing: 30px;
+        $article_width: ($proj_width / 3) - $spacing/2;
+
+        width: $article_width;
+        margin: $spacing / 2;
+        margin-top: 0;
+        display: inline-block;
+        vertical-align: top;
+        .inside {
+            display: table-cell;
+        }
+
+        @for $n from 1 through 6 {
+            h#{$n} {
+                font-size: 24pt;
+                font-weight: bold;
+                margin: 0 0 8pt;
+            }
+        }
+
+        img {
+            max-width: $article_width;
+        }
+
     }
 }
