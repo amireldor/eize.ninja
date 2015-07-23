@@ -1,0 +1,4 @@
+order items in home projects' page
+project page
+contact?
+error logging better somehow
