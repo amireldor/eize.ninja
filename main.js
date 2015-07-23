@@ -32,13 +32,17 @@ app.get('/', function (req, res) {
     var renders = [ render_defer('projects/thumb_berserkore'), render_defer('projects/thumb_amir-x') ];
     Q.allSettled(renders).then(function (results) {
         var html = '';
-        for (d of results) {
-            if (d.value) html += d.value;
+        for (p of results) {
+            if (p.state == 'rejected') {
+                console.log('Error:', p.reason);
+                continue;
+            }
+            if (p.value) html += p.value;
         }
         return html;
     }).then(function (data) {
         res.render('home', { html: data });
-    });;
+    });
 });
 
 app.get('/:proj', function (req, res) {

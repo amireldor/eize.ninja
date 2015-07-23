@@ -1,0 +1,9 @@
+//@import "globals";
+
+#projects {
+    $proj_width: $width * .8;
+
+    img.thumbnail {
+        max-width: ($proj_width + 10px) / 3;
+    }
+}
