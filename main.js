@@ -11,17 +11,33 @@ app.use(express.static('public'))
 
 app.get('/', function (req, res) {
     // get available .jade files for projects
-    var available_projs = fs.readdirSync('./views/projects'); // remove Sync? do promise or callback?
+    var available_projs = fs.readdirSync('./projects'); // remove Sync? do promise or callback?
     available_projs = available_projs.filter(function(filename) {
-        var re = new RegExp('\.jade$');
+        var re = new RegExp('\.json$');
         return filename.match(re);
     });
 
-    available_thumbs = available_projs.filter(function(filename) {
-        var re = new RegExp('^thumb_');
-        return filename.match(re);
-    });
+    var readers = [];
+    for (p of available_projs) {
+        readers.push(Q.nfcall(fs.readFile, 'projects/' + p, { encoding: 'utf-8'} ));
+    }
 
+    Q.allSettled(readers).then(function (results) {
+        var projects = []
+        for (p of results) {
+            if (p.state == 'fulfilled') {
+                try {
+                    projects.push(JSON.parse(p.value));
+                } catch(err) {
+                    //projects.push("error", err);
+                }
+            }
+        }
+        return projects;
+    }).then(function(projects) {
+        res.render('home', { "projects": projects });
+    });
+/*
     // returns a promise of template rendering
     render_defer = function (template) {
         var deferred= Q.defer();
@@ -53,7 +69,7 @@ app.get('/', function (req, res) {
         return html;
     }).then(function (data) {
         res.render('home', { html: data });
-    });
+    });*/
 });
 
 app.get('/:proj', function (req, res) {
