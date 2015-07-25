@@ -44,10 +44,25 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:proj', function (req, res) {
-    var proj = req.params.proj || res.send('no.');
-    title = "2";
-    html = "<h1>HIEL!"+proj+"</h1>";
-    res.render('project', { "project_title": title, "html": html });
+    var proj = req.params.proj || res.send('no.'); // make 404 here, though it should not be reached
+
+    var _readFile = Q.denodeify(fs.readFile);
+
+    Q.all([
+        _readFile('projects/' + proj + '.json', { "encoding": "utf-8" }),
+        _readFile('projects/markdown/' + proj + '.md', { "encoding": "utf-8" })
+    ]).done(function(values) {
+        var title, html;
+        try {
+            var meta = JSON.parse(values[0]);
+            title = meta.title;
+        } catch(err) {
+            title = proj;
+        }
+        html = values[1];
+
+        res.render('project', { "project_title": title, "html": html });
+    });
 });
 
 var server = app.listen(3000, function() {
