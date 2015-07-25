@@ -44,9 +44,10 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:proj', function (req, res) {
-    var proj = req.params.proj || '';
-
-    res.send('not yet');
+    var proj = req.params.proj || res.send('no.');
+    title = "2";
+    html = "<h1>HIEL!"+proj+"</h1>";
+    res.render('project', { "project_title": title, "html": html });
 });
 
 var server = app.listen(3000, function() {
