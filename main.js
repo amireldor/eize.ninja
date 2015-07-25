@@ -35,6 +35,7 @@ app.get('/', function (req, res) {
         }
         return projects;
     }).then(function(projects) {
+        console.log(projects);
         res.render('home', { "projects": projects });
     });
 /*

@@ -7,3 +7,10 @@ block content
     #projects
         asdkjasd
         != html
+
+        - each proj in projects
+            article
+                .inside
+                    h3.title= proj.title
+                    img(src="#{proj.image}" alt="#{proj.title} thumbnail").thumbnail
+                    .description= proj.short_desc
