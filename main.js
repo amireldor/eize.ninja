@@ -25,7 +25,13 @@ app.get('/', function (req, res) {
     // returns a promise of template rendering
     render_defer = function (template) {
         var deferred= Q.defer();
-        app.render(template, function (err, html) {
+
+        var re = new RegExp('-([\\w.-]+)\\.jade$');
+        var name_matches = template.match(re) || [];
+        // a valid page name was extracted from template name
+        var project_name = name_matches[1] || null;
+
+        app.render(template, { project: project_name }, function (err, html) {
             if (err != null) {
                 deferred.reject(err);
             }
