@@ -33,9 +33,12 @@ app.get('/', function (req, res) {
                 }
             }
         }
+        projects.sort(function (a, b) {
+            if (a.weight < b.weight) return -1;
+            return 1;
+        });
         return projects;
     }).then(function(projects) {
-        console.log(projects);
         res.render('home', { "projects": projects });
     });
 /*
