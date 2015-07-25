@@ -2,14 +2,24 @@
     $proj_width: $width * .94;
     margin: 0 auto;
     width: $proj_width;
+    padding-bottom: 120px;
 
     article {
+        text-align: center;
+
         $spacing: 30px;
-        $article_width: ($proj_width / 3) - $spacing/2;
+        $article_width: ($proj_width / 3);
+
+        box-sizing: border-box;
 
         width: $article_width;
-        margin: $spacing / 2;
-        margin-top: 0;
+        margin: 0;
+        padding: $spacing / 2;
+
+        p {
+            margin: 0 0 1em;
+        }
+
         display: inline-block;
         vertical-align: top;
         .inside {
@@ -25,7 +35,12 @@
         }
 
         img {
-            max-width: $article_width;
+            width: $article_width - ($spacing * 2);
+            margin: 0 auto 1em;
+            display: block;
+            color: #888;
+            font-size: 10pt;
+            font-style: italic;
         }
 
     }
