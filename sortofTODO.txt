@@ -2,3 +2,4 @@ order items in home projects' page
 project page
 contact?
 error logging better somehow
+don't use google apis, use local fonts nad hta'ts it

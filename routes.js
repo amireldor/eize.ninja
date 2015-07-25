@@ -39,13 +39,23 @@ exports.home = function (req, res) {
 // project page
 exports.project = function (req, res) {
     var proj = req.params.proj || res.send('no.'); // make 404 here, though it should not be reached
-    var _readFile = Q.denodeify(fs.readFile);
 
-    // TODO: error handilng!!@# FIX FXI
+    var _readFile = function (filename) {
+        var defer = Q.defer();
+        fs.readFile(filename, function (err, data) {
+            if (err) {
+                defer.reject(err);
+                return;
+            }
+            defer.resolve(data);
+        });
+        return defer.promise;
+    }
+
     Q.all([
         _readFile('projects/' + proj + '.json', { "encoding": "utf-8" }),
         _readFile('projects/markdown/' + proj + '.md', { "encoding": "utf-8" })
-    ]).done(function(values) {
+    ]).then(function(values) {
         var title, html;
         try {
             var meta = JSON.parse(values[0]);
@@ -56,5 +66,8 @@ exports.project = function (req, res) {
         html = values[1];
 
         res.render('project', { "project_title": title, "html": html });
-    });
+    }).catch(function(err) {
+        // TODO: error handilng!!@# FIX FXI
+        res.end('amir');
+    }).done();
 }
