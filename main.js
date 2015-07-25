@@ -11,54 +11,35 @@ app.use(express.static('public'))
 
 app.get('/', function (req, res) {
     // get available .jade files for projects
-    var available_projs = fs.readdirSync('./views/projects'); // remove Sync? do promise or callback?
+    var available_projs = fs.readdirSync('./projects'); // remove Sync? do promise or callback?
     available_projs = available_projs.filter(function(filename) {
-        var re = new RegExp('\.jade$');
+        var re = new RegExp('\.json$');
         return filename.match(re);
     });
 
-    available_thumbs = available_projs.filter(function(filename) {
-        var re = new RegExp('^thumb_');
-        return filename.match(re);
-    });
-
-    // returns a promise of template rendering
-    render_defer = function (template) {
-        var deferred= Q.defer();
-
-        var re = new RegExp('-([\\w.-]+)\\.jade$');
-        var name_matches = template.match(re) || [];
-        // a valid page name was extracted from template name
-        var project_name = name_matches[1] || null;
-
-        app.render(template, { project: project_name }, function (err, html) {
-            if (err != null) {
-                deferred.reject(err);
-            }
-            deferred.resolve(html);
-        });
-        return deferred.promise;
-    };
-
-    // start rendering stuff
-    var renders = [];
-    available_thumbs.sort() // alphabeticaly
-    for (thumb of available_thumbs) {
-        renders.push(render_defer('projects/' + thumb));
+    var readers = [];
+    for (p of available_projs) {
+        readers.push(Q.nfcall(fs.readFile, 'projects/' + p, { encoding: 'utf-8'} ));
     }
 
-    Q.allSettled(renders).then(function (results) {
-        var html = '';
+    Q.allSettled(readers).then(function (results) {
+        var projects = []
         for (p of results) {
-            if (p.state == 'rejected') {
-                console.log('Error:', p.reason);
-                continue;
+            if (p.state == 'fulfilled') {
+                try {
+                    projects.push(JSON.parse(p.value));
+                } catch(err) {
+                    //projects.push("error", err);
+                }
             }
-            if (p.value) html += p.value;
         }
-        return html;
-    }).then(function (data) {
-        res.render('home', { html: data });
+        projects.sort(function (a, b) {
+            if (a.weight < b.weight) return -1;
+            return 1;
+        });
+        return projects;
+    }).then(function(projects) {
+        res.render('home', { "projects": projects });
     });
 });
 
