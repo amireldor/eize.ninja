@@ -1,5 +1,6 @@
 var fs = require('fs');
 var Q = require('q');
+var marked = require('marked');
 
 // homepage
 exports.home = function (req, res) {
@@ -63,11 +64,11 @@ exports.project = function (req, res) {
         } catch(err) {
             title = proj;
         }
-        html = values[1];
+        html = marked(String(values[1]));
 
         res.render('project', { "project_title": title, "html": html });
     }).catch(function(err) {
         // TODO: error handilng!!@# FIX FXI
-        res.end('amir');
+        res.end('amir' + err);
     }).done();
 }

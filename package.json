@@ -19,7 +19,7 @@
   "dependencies": {
     "express": "^4.13.1",
     "jade": "^1.11.0",
-    "jstransformer-markdown": "^1.1.0",
+    "marked": "^0.3.3",
     "q": "^1.4.1"
   }
 }
