@@ -36,6 +36,7 @@ app.get('/', function (req, res) {
 
     // start rendering stuff
     var renders = [];
+    available_thumbs.sort() // alphabeticaly
     for (thumb of available_thumbs) {
         renders.push(render_defer('projects/' + thumb));
     }
