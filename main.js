@@ -11,13 +11,18 @@ app.use(express.static('public'))
 
 app.get('/', function (req, res) {
     // get available .jade files for projects
-    var available_projs = fs.readdirSync('./views/projects');
+    var available_projs = fs.readdirSync('./views/projects'); // remove Sync? do promise or callback?
     available_projs = available_projs.filter(function(filename) {
         var re = new RegExp('\.jade$');
         return filename.match(re);
     });
 
-    // returns a promise when the rendering finished
+    available_thumbs = available_projs.filter(function(filename) {
+        var re = new RegExp('^thumb_');
+        return filename.match(re);
+    });
+
+    // returns a promise of template rendering
     render_defer = function (template) {
         var deferred= Q.defer();
         app.render(template, function (err, html) {
@@ -29,7 +34,12 @@ app.get('/', function (req, res) {
         return deferred.promise;
     };
 
-    var renders = [ render_defer('projects/thumb_berserkore'), render_defer('projects/thumb_amir-x') ];
+    // start rendering stuff
+    var renders = [];
+    for (thumb of available_thumbs) {
+        renders.push(render_defer('projects/' + thumb));
+    }
+
     Q.allSettled(renders).then(function (results) {
         var html = '';
         for (p of results) {
