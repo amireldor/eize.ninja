@@ -41,39 +41,6 @@ app.get('/', function (req, res) {
     }).then(function(projects) {
         res.render('home', { "projects": projects });
     });
-/*
-    // returns a promise of template rendering
-    render_defer = function (template) {
-        var deferred= Q.defer();
-        app.render(template, function (err, html) {
-            if (err != null) {
-                deferred.reject(err);
-            }
-            deferred.resolve(html);
-        });
-        return deferred.promise;
-    };
-
-    // start rendering stuff
-    var renders = [];
-    available_thumbs.sort() // alphabeticaly
-    for (thumb of available_thumbs) {
-        renders.push(render_defer('projects/' + thumb));
-    }
-
-    Q.allSettled(renders).then(function (results) {
-        var html = '';
-        for (p of results) {
-            if (p.state == 'rejected') {
-                console.log('Error:', p.reason);
-                continue;
-            }
-            if (p.value) html += p.value;
-        }
-        return html;
-    }).then(function (data) {
-        res.render('home', { html: data });
-    });*/
 });
 
 app.get('/:proj', function (req, res) {
