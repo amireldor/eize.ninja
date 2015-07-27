@@ -31,6 +31,10 @@ body {
     padding-top: 14pt;
 }
 
+#home-btn {
+    color: black;
+}
+
 #site-title {
     font-family: $font_serif, serif;
     font-size: 42pt;
@@ -82,7 +86,7 @@ body {
         text-align: left;
     }
 
-    margin: 20px 0 0;
+    margin: 0;
 }
 
 @import "home";
@@ -90,5 +94,5 @@ body {
 
 #sad {
     text-align: center;
-    padding: 40px;
+    padding: 10px 0 40px;
 }
