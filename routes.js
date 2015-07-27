@@ -39,7 +39,7 @@ exports.home = function (req, res) {
 
 // project page
 exports.project = function (req, res) {
-    var proj = req.params.proj || res.send('no.'); // make 404 here, though it should not be reached
+    var proj = req.params.proj;
 
     var _readFile = function (filename) {
         var defer = Q.defer();
@@ -76,6 +76,6 @@ exports.project = function (req, res) {
         res.render('project', vars);
     }).catch(function(err) {
         // TODO: error handilng!!@# FIX FXI
-        res.end('amir' + err);
+        res.render('sad');
     }).done();
 }
