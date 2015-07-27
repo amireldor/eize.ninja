@@ -65,8 +65,16 @@ exports.project = function (req, res) {
             title = proj;
         }
         html = marked(String(values[1]));
+        meta.screenshots = [ 1 ,2 ,3 ];
 
-        res.render('project', { "project_title": title, "html": html });
+        var vars = {
+            "project_title": title,
+            "html": html,
+            "thumbnail": meta.image,
+            "screenshots": meta.screenshots || null
+        }
+
+        res.render('project', vars);
     }).catch(function(err) {
         // TODO: error handilng!!@# FIX FXI
         res.end('amir' + err);
