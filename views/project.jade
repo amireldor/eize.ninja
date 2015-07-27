@@ -12,4 +12,5 @@ block content
             #screenshots
             - each screen in screenshots
                 .screenshot
-                    img(src=screen alt="#{project_title} screenshot")
+                    img(src=screen.small alt="#{project_title} screenshot")
+                    a(href="#{screen.large}") (see larger)

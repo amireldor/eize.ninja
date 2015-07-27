@@ -3,5 +3,19 @@
     "title": "BERSERKORE",
     "weight": 100,
     "image": "images/berserkore-icon.png",
-    "short_desc": "A game. A silly game."
+    "short_desc": "A game. A silly game.",
+    "screenshots": [
+        {
+            "small": "images/screenshots/bsrz1small.png",
+            "large": "images/screenshots/bsrz1.png"
+        },
+        {
+            "small": "images/screenshots/bsrz2small.png",
+            "large": "images/screenshots/bsrz2.png"
+        },
+        {
+            "small": "images/screenshots/bsrz3small.png",
+            "large": "images/screenshots/bsrz3.png"
+        }
+    ]
 }

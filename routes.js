@@ -65,7 +65,6 @@ exports.project = function (req, res) {
             title = proj;
         }
         html = marked(String(values[1]));
-        meta.screenshots = [ 1 ,2 ,3 ];
 
         var vars = {
             "project_title": title,
