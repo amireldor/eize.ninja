@@ -10,7 +10,7 @@ block content
         !=html
         if screenshots
             #screenshots
-            - each screen in screenshots
-                .screenshot
-                    img(src=screen.small alt="#{project_title} screenshot")
-                    a(href="#{screen.large}") (see larger)
+                - each screen in screenshots
+                    .screenshot
+                        img(src=screen.small alt="#{project_title} screenshot")
+                        a(href="#{screen.large}").see-large (see larger)

@@ -1,6 +1,9 @@
 #project {
-    padding: 1.4em;
-    padding-bottom: 3em;
+    $proj_padding: 20px;
+    width: $width;
+    box-sizing: border-box;
+    padding: $proj_padding;
+    padding-bottom: 72px;
 
     h2.title {
         margin: 0 0 1.2em;
@@ -11,6 +14,40 @@
         float: left;
         margin-right: 1em;
         margin-bottom: 1em;
+    }
+
+    @at-root {
+        #screenshots {
+            $screenshots_width: $width -  2*$proj_padding;
+            width: $screenshots_width;
+            margin: 0;
+            padding: 10px 0 0;
+            box-sizing: border-box;
+            clear: both;
+            text-align: center;
+
+            .screenshot {
+                $num_in_row: 3;
+
+                margin-top: 20px;
+                $thumb_width: $screenshots_width / $num_in_row;
+                width: $thumb_width;
+                box-sizing: border-box;
+                display: inline-block;
+                text-align: center;
+
+                img {
+                    display: block;
+                    margin: 0 auto;
+                    max-width: $thumb_width;
+                }
+
+                .see-large {
+                    font-size: 10pt;
+                    color: blue;
+                }
+            }
+        }
     }
 
     overflow: hidden;
