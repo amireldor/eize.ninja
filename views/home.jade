@@ -8,6 +8,8 @@ block content
         - each proj in projects
             article
                 .inside
-                    h3.title= proj.title
-                    img(src="#{proj.image}" alt="#{proj.title} thumbnail").thumbnail
+                    h3.title
+                        a(href="#{root_url}/#{proj.name}")= proj.title
+                    a(href="#{root_url}/#{proj.name}")
+                        img(src="#{proj.image}" alt="#{proj.title} thumbnail").thumbnail
                     .description= proj.short_desc
