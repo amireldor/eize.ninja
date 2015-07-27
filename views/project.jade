@@ -4,5 +4,12 @@ block title
     | eize.ninja - #{project_title}
 
 block content
-    h2.title= project_title
-    !=html
+    #project
+        h2.title= project_title
+        img(alt="#{project_title} thumbnail" src=thumbnail).thumbnail
+        !=html
+        if screenshots
+            #screenshots
+            - each screen in screenshots
+                .screenshot
+                    img(src=screen alt="#{project_title} screenshot")
