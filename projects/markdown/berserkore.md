@@ -1,3 +1,6 @@
+Download <a class="download" href="http://eize.ninja/berserkore-beta2.zip">BERSERKORE beta (Windows)</a>  
+And you can view or download the <a class="source" href="https://github.com/amireldor/berserkore-windows">sources here</a>
+
 **BERSERKORE** is a magnificent side-scroller game where you can't jump
 and you shoot red enemies. All of this while bombs of might fall upon
 you from the darkened skies.
