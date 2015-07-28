@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 app.get('/', routes.home);
 app.get('/:proj', routes.project);
 
-var server = app.listen(3000, function() {
+var server = app.listen(config.port, config.host, function() {
     var host = server.address().address;
     var port = server.address().port;
 
