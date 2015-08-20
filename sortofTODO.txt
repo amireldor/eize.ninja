@@ -3,3 +3,7 @@ project page
 contact?
 error logging better somehow
 don't use google apis, use local fonts nad hta'ts it
+page caching? + freshen script/util/somehow
+flex box!?
+screenshots thumbnails not clickable
+custom projects pages/css?
