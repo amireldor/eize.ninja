@@ -19,7 +19,6 @@ body {
     background: $bg_page url("../images/funnystuffcolor.svg") no-repeat 0 bottom;
     background-size: 100vw auto;
     background-attachment: fixed;
-    height: 100vh;
     font-family: $font_serif, serif;
     padding-bottom: 120px;
 }
@@ -30,7 +29,7 @@ body {
 }
 
 #content {
-    background: $bg_content;
+    background: rgba($bg_content, .7);
     padding-top: 14pt;
 }
 
