@@ -10,4 +10,4 @@ and some Boost libraries. An overkill. This version is for Windows, as I
 could not build nad check it on Linux or MAC, but the code is very portable and
 I will most probably build those versions some day which is not too far into the future.
 
-**BERSERKORE** is actually a remake of an old game I hacked when I was a child.
+**BERSERKORE** is actually a remake of an old game I created when I was a child.
