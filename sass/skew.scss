@@ -16,7 +16,10 @@ $nice_padding: 20px;
 
 body {
     color: $fg_color;
-    background: $bg_page;
+    background: $bg_page url("../images/funnystuffcolor.svg") no-repeat 0 bottom;
+    background-size: 100vw auto;
+    background-attachment: fixed;
+    height: 100vh;
     font-family: $font_serif, serif;
     padding-bottom: 120px;
 }
