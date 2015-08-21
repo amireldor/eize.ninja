@@ -1,9 +1,9 @@
-order items in home projects' page
-project page
+screenshots thumbnails not clickable
+don't use google apis, use local fonts nad hta'ts it
 contact?
 error logging better somehow
-don't use google apis, use local fonts nad hta'ts it
 page caching? + freshen script/util/somehow
 flex box!?
-screenshots thumbnails not clickable
 custom projects pages/css?
+    order items in home projects' page
+    project page
