@@ -19,7 +19,13 @@ html(lang=en)
                             span.inside eize
                         span.ninja
                             span.inside ninja
-                p.intro ...and what a ninja you are! These are some projects, for you to behold.
+                #info-line
+                    p.intro ...and what a ninja you are! These are some projects, for you to behold.
+                    ul.links
+                        li
+                            a(href="#{root_url}/").home home
+                        li
+                            a(href="#{root_url}/me").me get in touch!
 
                 #content
                     block content

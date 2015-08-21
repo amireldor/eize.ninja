@@ -103,6 +103,34 @@ body {
     margin: 0;
 }
 
+#info-line {
+    & > * {
+        display: inline-block;
+        margin-right: 20px;
+        &:last-child {
+            margin-right: 20px;
+        }
+        float: left;
+    }
+    overflow: hidden;
+
+    ul.links {
+        padding: 0;
+        list-style: none;
+        li {
+            display: inline-block;
+            padding-right: 8px;
+            &:last-child {
+                padding-right: 0;
+            }
+
+            a {
+                color: black;
+            }
+        }
+    }
+}
+
 @import "home";
 @import "project";
 
