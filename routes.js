@@ -79,3 +79,9 @@ exports.project = function (req, res) {
         res.render('sad');
     }).done();
 }
+
+// page page. a simple page that is...
+exports.page = function (req, res) {
+    var page = req.params.page || req.path.substr(1);
+    res.end(page);
+}
