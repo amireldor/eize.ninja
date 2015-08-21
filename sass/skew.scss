@@ -104,11 +104,15 @@ body {
 }
 
 #info-line {
+    $info-color: #444;
+    color: $info-color;
+
     & > * {
         display: inline-block;
         margin-right: 20px;
         &:last-child {
-            margin-right: 20px;
+            margin-right: 0;
+            float: right;
         }
         float: left;
     }
@@ -119,13 +123,13 @@ body {
         list-style: none;
         li {
             display: inline-block;
-            padding-right: 8px;
+            padding-right: 14px;
             &:last-child {
                 padding-right: 0;
             }
 
             a {
-                color: black;
+                color: $info-color;
             }
         }
     }
