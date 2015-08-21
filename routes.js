@@ -85,5 +85,16 @@ exports.project = function (req, res) {
 exports.page = function (req, res) {
     var page = req.params.page || req.path.substr(1);
 
-    res.end(page);
+    allFulfilled = function (values) {
+        res.end('<h1>good<h2>' + values[0] + '<h2>' + values[1]);
+    }
+
+    rejected = function (reason) {
+        res.end('<h1>bad<h2>' + reason);
+    }
+
+    Q.all([
+        _readFile("pages/" + page + ".json"),
+        _readFile("pages/content/" + page + ".markdown")
+    ]).then(allFulfilled, rejected).done();
 }
