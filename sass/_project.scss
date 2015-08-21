@@ -36,6 +36,10 @@
                 display: inline-block;
                 text-align: center;
 
+                a {
+                    display: inline-block;
+                }
+
                 img {
                     display: block;
                     margin: 0 auto;
@@ -45,6 +49,7 @@
                 .see-large {
                     font-size: 10pt;
                     color: blue;
+                    display: block;
                 }
             }
         }
