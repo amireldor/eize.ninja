@@ -1,5 +1,5 @@
 screenshots thumbnails not clickable
-don't use google apis, use local fonts nad hta'ts it
+	don't use google apis, use local fonts nad hta'ts it
 contact?
 error logging better somehow
 page caching? + freshen script/util/somehow
