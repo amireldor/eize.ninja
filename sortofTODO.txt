@@ -1,4 +1,4 @@
-screensheots thumbnails not clickable
+    screensheots thumbnails not clickable
 	don't use google apis, use local fonts nad hta'ts it
 contact?
 error logging better somehow

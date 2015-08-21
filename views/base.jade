@@ -12,13 +12,15 @@ html(lang=en)
     body
         #everything
             #main
-                a(href="#{root_url}/")#home-btn home
+                a(href="#{root_url}/")#home-btn.home home
                 h1#site-title
-                    span.eize
-                        span.inside eize
-                    span.ninja
-                        span.inside ninja
+                    a(href="#{root_url}/")#home-title
+                        span.eize
+                            span.inside eize
+                        span.ninja
+                            span.inside ninja
                 p.intro ...and what a ninja you are! These are some projects, for you to behold.
+
                 #content
                     block content
                         em nothing to see here
