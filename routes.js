@@ -86,10 +86,15 @@ exports.page = function (req, res) {
     var page = req.params.page || req.path.substr(1);
 
     allFulfilled = function (values) {
-        res.end('<h1>good<h2>' + values[0] + '<h2>' + values[1]);
+        var meta = JSON.parse(values[0]);
+        var title = meta.title;
+        var html_content = marked(String(values[1]));
+
+        res.render('page', { title: title, html: html_content });
     }
 
     rejected = function (reason) {
+        // TODO handle error nicely
         res.end('<h1>bad<h2>' + reason);
     }
 
