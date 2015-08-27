@@ -15,6 +15,8 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', routes.home);
+app.get('/me', routes.page);
+app.get('/page/:page', routes.page);
 app.get('/:proj', routes.project);
 
 var server = app.listen(config.port, config.host, function() {

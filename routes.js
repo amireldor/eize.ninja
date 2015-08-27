@@ -2,6 +2,19 @@ var fs = require('fs');
 var Q = require('q');
 var marked = require('marked');
 
+// Async _readFile, returns Promise (Q stuff)
+var _readFile = function (filename) {
+    var defer = Q.defer();
+    fs.readFile(filename, function (err, data) {
+        if (err) {
+            defer.reject(err);
+            return;
+        }
+        defer.resolve(data);
+    });
+    return defer.promise;
+}
+
 // homepage
 exports.home = function (req, res) {
     // get available .jade files for projects
@@ -41,18 +54,6 @@ exports.home = function (req, res) {
 exports.project = function (req, res) {
     var proj = req.params.proj;
 
-    var _readFile = function (filename) {
-        var defer = Q.defer();
-        fs.readFile(filename, function (err, data) {
-            if (err) {
-                defer.reject(err);
-                return;
-            }
-            defer.resolve(data);
-        });
-        return defer.promise;
-    }
-
     Q.all([
         _readFile('projects/' + proj + '.json', { "encoding": "utf-8" }),
         _readFile('projects/markdown/' + proj + '.md', { "encoding": "utf-8" })
@@ -78,4 +79,27 @@ exports.project = function (req, res) {
         // TODO: error handilng!!@# FIX FXI
         res.render('sad');
     }).done();
+}
+
+// page page. a simple page that is...
+exports.page = function (req, res) {
+    var page = req.params.page || req.path.substr(1);
+
+    allFulfilled = function (values) {
+        var meta = JSON.parse(values[0]);
+        var title = meta.title;
+        var html_content = marked(String(values[1]));
+
+        res.render('page', { title: title, html: html_content });
+    }
+
+    rejected = function (reason) {
+        // TODO handle error nicely
+        res.end('<h1>bad<h2>' + reason);
+    }
+
+    Q.all([
+        _readFile("pages/" + page + ".json"),
+        _readFile("pages/content/" + page + ".markdown")
+    ]).then(allFulfilled, rejected).done();
 }
