@@ -16,6 +16,12 @@
         margin: 0;
         padding: $spacing / 2;
 
+        a {
+            &:visited {
+                color: darken(blue, 20%);
+            }
+        }
+
         p {
             margin: 0 0 1em;
         }

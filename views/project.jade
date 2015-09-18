@@ -5,7 +5,9 @@ block title
 
 block content
     #project
-        h2.title= project_title
+        .title
+            h2.title= project_title
+            a.back(href="#{root_url}") (back to projects)
         img(alt="#{project_title} thumbnail" src=thumbnail).thumbnail
         !=html
         if screenshots

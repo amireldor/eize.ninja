@@ -5,9 +5,24 @@
     padding: $proj_padding;
     padding-bottom: 72px;
 
-    h2.title {
-        margin: 0 0 1.2em;
-        font-size: 30pt;
+    & > .title {
+        margin: 0 0 2.8em;
+
+        * {
+            margin: 0;
+        }
+
+        h2.title {
+            font-size: 30pt;
+            display: inline-block;
+        }
+
+        a.back {
+            display: inline-block;
+            margin-left: 12pt;
+            font-size: 12pt;
+            color: blue;
+        }
     }
 
     img.thumbnail {
