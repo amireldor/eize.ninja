@@ -7,3 +7,4 @@ flex box!?
 custom projects pages/css?
     order items in home projects' page
     project page
+add #{root_url} on markdown links, if they are inner-site

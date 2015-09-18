@@ -11,3 +11,5 @@ I built the theme I use (the one with the birthday capybara, codename "simcapy")
 if I recall correctly, and it looks just fine under my mobile phone, so I'm happy with that. It's based on the
 **Zen drupal theme.** The theme is also subject to change, into something less cheerful, yet happy enough.
 
+I have **never** submitted Amir-X to search engines, yet I got traffic and some people even said "thank you!"
+on some posts. I think this is an achivement, isn't it?
