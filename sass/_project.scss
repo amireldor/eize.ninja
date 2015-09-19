@@ -29,6 +29,7 @@
         float: left;
         margin-right: 1em;
         margin-bottom: 1em;
+        border-radius: $border_radius;;
     }
 
     @at-root {
@@ -59,6 +60,7 @@
                     display: block;
                     margin: 0 auto;
                     max-width: $thumb_width;
+                    border-radius: $border_radius;;
                 }
 
                 .see-large {
