@@ -43,6 +43,25 @@ a {
 #content {
     background: rgba($bg_content, .7);
     padding-top: 14pt;
+    & > * > .title { // #content > (#project/#page/#whatever) > h2.title
+        margin: 0 0 2.8em;
+
+        * {
+            margin: 0;
+        }
+
+        h2.title {
+            font-size: 30pt;
+            display: inline-block;
+        }
+
+        a.back {
+            display: inline-block;
+            margin-left: 12pt;
+            font-size: 12pt;
+            color: blue;
+        }
+    }
 }
 
 #home-btn {

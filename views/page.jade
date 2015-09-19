@@ -5,5 +5,7 @@ block title
 
 block content
     #page
-        h2.title= title
+        .title
+            h2.title= title
+            a.back(href="#{root_url}") (back to sanity)
         !=html
